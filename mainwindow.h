@@ -29,6 +29,8 @@ private slots:
 
     void on_trier_clicked();
 
+    void on_pdf_clicked();
+
 private:
     Ui::MainWindow *ui;
     Employ E;

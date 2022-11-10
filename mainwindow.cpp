@@ -3,6 +3,16 @@
 #include <QMessageBox>
 #include <QtWidgets>
 #include "employ.h"
+#include <QTextDocument>
+#include <QPrinter>
+#include <QMainWindow>
+#include <QSortFilterProxyModel>
+#include <QTextTableFormat>
+#include <QStandardItemModel>
+#include <QDialog>
+#include <QFileDialog>
+#include <QDialog>
+#include <QTextStream>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -230,4 +240,61 @@ void MainWindow::on_trier_clicked()
     }
 
   }
+}
+
+
+void MainWindow::on_pdf_clicked()
+{
+    {
+
+           QString strStream;
+                       QTextStream out(&strStream);
+                       const int rowCount = ui->table->model()->rowCount();
+                       const int columnCount =ui->table->model()->columnCount();
+
+
+                       out <<  "<html>\n"
+                               "<head>\n"
+                               "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+                               <<  QString("<title>%1</title>\n").arg("employe")
+                               <<  "</head>\n"
+                               "<body bgcolor=#FFFFFF link=#5000A0>\n"
+                                   "<h1>Liste des Employés</h1>"
+
+                                   "<table border=1 cellspacing=0 cellpadding=2>\n";
+
+                       // headers
+                           out << "<thead><tr bgcolor=#f0f0f0>";
+                           for (int column = 0; column < columnCount; column++)
+                               if (!ui->table->isColumnHidden(column))
+                                   out << QString("<th>%1</th>").arg(ui->table->model()->headerData(column, Qt::Horizontal).toString());
+                           out << "</tr></thead>\n";
+                           // data table
+                              for (int row = 0; row < rowCount; row++) {
+                                  out << "<tr>";
+                                  for (int column = 0; column < columnCount; column++) {
+                                      if (!ui->table->isColumnHidden(column)) {
+                                          QString data = ui->table->model()->data(ui->table->model()->index(row, column)).toString().simplified();
+                                          out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+                                      }
+                                  }
+                                  out << "</tr>\n";
+                              }
+                              out <<  "</table>\n"
+                                  "</body>\n"
+                                  "</html>\n";
+
+
+
+               QTextDocument *document = new QTextDocument();
+               document->setHtml(strStream);
+
+
+               //QTextDocument document;
+               //document.setHtml(html);
+               QPrinter printer(QPrinter::PrinterResolution);
+               printer.setOutputFormat(QPrinter::PdfFormat);
+               printer.setOutputFileName("employe.pdf");
+               document->print(&printer);
+   }
 }
