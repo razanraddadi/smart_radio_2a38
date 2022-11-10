@@ -19,8 +19,8 @@
      <rect>
       <x>20</x>
       <y>30</y>
-      <width>761</width>
-      <height>501</height>
+      <width>881</width>
+      <height>601</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -394,25 +394,191 @@
      <widget class="QTableView" name="tri">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>731</width>
-        <height>441</height>
+        <x>50</x>
+        <y>230</y>
+        <width>741</width>
+        <height>331</height>
        </rect>
       </property>
      </widget>
-     <widget class="QLabel" name="label_12">
+     <widget class="QGroupBox" name="groupBox_4">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>10</y>
-        <width>141</width>
-        <height>16</height>
+        <x>30</x>
+        <y>20</y>
+        <width>531</width>
+        <height>80</height>
        </rect>
       </property>
-      <property name="text">
-       <string>TRI Par CNSS</string>
+      <property name="title">
+       <string>TRI par: </string>
       </property>
+      <widget class="QRadioButton" name="tri_1">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>20</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>CIN </string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="tri_2">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>20</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Prenom</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="tri_3">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>20</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nom</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="tri_4">
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>20</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>CNSS </string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="trier">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>40</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Trier</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_5">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>110</y>
+        <width>561</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>RECHERCHE par: </string>
+      </property>
+      <widget class="QRadioButton" name="rech_1">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>CIN </string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="rech_2">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>20</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Prenom</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="rech_3">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>20</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nom</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="rech_4">
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>20</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>CNSS </string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="rech_5">
+       <property name="geometry">
+        <rect>
+         <x>430</x>
+         <y>20</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Poste</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="search">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>60</y>
+         <width>113</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="chercher">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>60</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Chercher</string>
+       </property>
+      </widget>
      </widget>
     </widget>
    </widget>

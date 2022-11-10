@@ -25,6 +25,10 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_chercher_clicked();
+
+    void on_trier_clicked();
+
 private:
     Ui::MainWindow *ui;
     Employ E;

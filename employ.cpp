@@ -89,7 +89,7 @@ query.bindValue(":poste",poste);
 
 return query.exec();
 }
-
+//tri
 QSqlQueryModel* Employ::tri_cin()
 {
     QSqlQueryModel* model=new QSqlQueryModel();
@@ -97,4 +97,91 @@ QSqlQueryModel* Employ::tri_cin()
         model->setQuery("SELECT * FROM EMPLOYE ORDER BY CIN ASC");
 
     return model;
+}
+
+QSqlQueryModel* Employ::tri_nom()
+{
+    QSqlQueryModel* model=new QSqlQueryModel();
+
+        model->setQuery("SELECT * FROM EMPLOYE ORDER BY NOM ");
+
+    return model;
+}
+
+QSqlQueryModel* Employ::tri_prenom()
+{
+    QSqlQueryModel* model=new QSqlQueryModel();
+
+        model->setQuery("SELECT * FROM EMPLOYE ORDER BY PRENOM");
+
+    return model;
+}
+
+QSqlQueryModel* Employ::tri_cnss()
+{
+    QSqlQueryModel* model=new QSqlQueryModel();
+
+        model->setQuery("SELECT * FROM EMPLOYE ORDER BY CNSS");
+
+    return model;
+}
+
+QSqlQueryModel* Employ::chercher_cin(QString rech)
+{
+       QString sQuery="SELECT * FROM EMPLOYE WHERE CIN LIKE'%"+rech+"%'";
+
+       QSqlQueryModel*model=new QSqlQueryModel();
+        QSqlQuery qry;
+        qry.prepare(sQuery);
+        qry.exec();
+        model->setQuery(qry);
+        return model;
+}
+
+QSqlQueryModel* Employ::chercher_nom(QString rech)
+{
+       QString sQuery="SELECT * FROM EMPLOYE WHERE NOM LIKE'%"+rech+"%'";
+
+       QSqlQueryModel*model=new QSqlQueryModel();
+        QSqlQuery qry;
+        qry.prepare(sQuery);
+        qry.exec();
+        model->setQuery(qry);
+        return model;
+}
+
+QSqlQueryModel* Employ::chercher_prenom(QString rech)
+{
+       QString sQuery="SELECT * FROM EMPLOYE WHERE PRENOM LIKE'%"+rech+"%'";
+
+       QSqlQueryModel*model=new QSqlQueryModel();
+        QSqlQuery qry;
+        qry.prepare(sQuery);
+        qry.exec();
+        model->setQuery(qry);
+        return model;
+}
+
+QSqlQueryModel* Employ::chercher_cnss(QString rech)
+{
+       QString sQuery="SELECT * FROM EMPLOYE WHERE CNSS LIKE'%"+rech+"%'";
+
+       QSqlQueryModel*model=new QSqlQueryModel();
+        QSqlQuery qry;
+        qry.prepare(sQuery);
+        qry.exec();
+        model->setQuery(qry);
+        return model;
+}
+
+QSqlQueryModel* Employ::chercher_poste(QString rech)
+{
+       QString sQuery="SELECT * FROM EMPLOYE WHERE POSTE LIKE'%"+rech+"%'";
+
+       QSqlQueryModel*model=new QSqlQueryModel();
+        QSqlQuery qry;
+        qry.prepare(sQuery);
+        qry.exec();
+        model->setQuery(qry);
+        return model;
 }

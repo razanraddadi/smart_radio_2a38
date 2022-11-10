@@ -11,6 +11,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->table->setModel(E.afficher());
     ui->tri->setModel(E.tri_cin());
+    ui->tri->setModel(E.tri_nom());
+    ui->tri->setModel(E.tri_prenom());
+    ui->tri->setModel(E.tri_cnss());
+
 }
 
 MainWindow::~MainWindow()
@@ -84,4 +88,146 @@ void MainWindow::on_pushButton_2_clicked()
         QMessageBox::critical(nullptr,QObject::tr("Not OK"),QObject::tr("Modification non Effectué\n"),QMessageBox::Cancel);
     }
 
+}
+
+void MainWindow::on_chercher_clicked()
+{
+    QString rech =ui->search->text();
+
+     if(ui->rech_1->isChecked())
+    {
+     bool test=E.chercher_cin(rech);
+
+    if(test)
+    {
+
+    ui->tri->setModel(E.chercher_cin(rech));
+
+    }
+
+    }
+     else
+         if(ui->rech_2->isChecked())
+        {
+         bool test=E.chercher_prenom(rech);
+
+        if(test)
+        {
+
+        ui->tri->setModel(E.chercher_prenom(rech));
+
+        }
+
+        }
+     else
+             if(ui->rech_3->isChecked())
+            {
+             bool test=E.chercher_nom(rech);
+
+            if(test)
+            {
+
+            ui->tri->setModel(E.chercher_nom(rech));
+
+            }
+
+            }
+     else
+                 if(ui->rech_4->isChecked())
+                {
+                 bool test=E.chercher_cnss(rech);
+
+                if(test)
+                {
+
+                ui->tri->setModel(E.chercher_cnss(rech));
+
+                }
+
+                }
+     else
+                     if(ui->rech_5->isChecked())
+                    {
+                     bool test=E.chercher_poste(rech);
+
+                    if(test)
+                    {
+
+                    ui->tri->setModel(E.chercher_poste(rech));
+
+                    }
+
+                    }
+}
+
+void MainWindow::on_trier_clicked()
+{
+//tri par cin
+
+    if(ui->tri_1->isChecked())
+ {
+
+
+
+     bool test=E.tri_cin();
+
+    if(test)
+    {
+        //refresh
+
+        ui->tri->setModel(E.tri_cin());
+
+
+    }
+
+  }
+
+    //tri par prenom
+    else if(ui->tri_2->isChecked())
+ {
+     bool test=E.tri_prenom();
+
+    if(test)
+    {
+        //refresh
+
+        ui->tri->setModel(E.tri_prenom());
+
+    }
+
+  }
+
+    //tri par nom
+    else if(ui->tri_3->isChecked())
+ {
+
+
+
+     bool test=E.tri_nom();
+
+    if(test)
+    {
+        //refresh
+
+        ui->tri->setModel(E.tri_nom());
+
+    }
+
+  }
+    //tri par cnss
+    else if(ui->tri_4->isChecked())
+ {
+
+     bool test=E.tri_cnss();
+
+    if(test)
+    {
+        //refresh
+
+        ui->tri->setModel(E.tri_cnss());
+
+
+    }
+
+  }
 }

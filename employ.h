@@ -28,6 +28,14 @@ public:
     QSqlQueryModel * afficher();
     bool update(Employ);
     QSqlQueryModel* tri_cin();
+    QSqlQueryModel* tri_nom();
+    QSqlQueryModel* tri_prenom();
+    QSqlQueryModel* tri_cnss();
+    QSqlQueryModel* chercher_cin(QString rech);
+    QSqlQueryModel* chercher_nom(QString rech);
+    QSqlQueryModel* chercher_prenom(QString rech);
+    QSqlQueryModel* chercher_cnss(QString rech);
+    QSqlQueryModel* chercher_poste(QString rech);
 
 
 
