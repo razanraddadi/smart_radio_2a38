@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1033</width>
+    <width>1408</width>
     <height>747</height>
    </rect>
   </property>
@@ -17,10 +17,10 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>881</width>
-      <height>601</height>
+      <x>0</x>
+      <y>0</y>
+      <width>1511</width>
+      <height>671</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -197,6 +197,42 @@
       </property>
       <property name="text">
        <string>PDF</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="cryptage">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>20</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cryptage</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="decryptage">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>20</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Decryptage</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="cin_orig">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>20</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
       </property>
      </widget>
     </widget>
@@ -594,6 +630,34 @@
       </widget>
      </widget>
     </widget>
+    <widget class="QWidget" name="tab_6">
+     <attribute name="title">
+      <string>Statistiques</string>
+     </attribute>
+     <widget class="QTableView" name="stat">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>10</y>
+        <width>911</width>
+        <height>601</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="statistics">
+      <property name="geometry">
+       <rect>
+        <x>1020</x>
+        <y>60</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Statistiques</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -601,7 +665,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1033</width>
+     <width>1408</width>
      <height>26</height>
     </rect>
    </property>

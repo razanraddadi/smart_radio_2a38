@@ -3,8 +3,20 @@
 
 #include <QMainWindow>
 #include<employ.h>
+#include<smtp.h>
 #include<QSqlQuery>
 #include<QSqlQueryModel>
+
+#include<QPainter>
+#include <QtCharts>
+#include <QChartView>
+#include <QBarSeries>
+#include <QBarSet>
+#include <QLegend>
+#include <QBarCategoryAxis>
+#include <QHorizontalStackedBarSeries>
+#include <QLineSeries>
+#include <QCategoryAxis>
 
 namespace Ui {
 class MainWindow;
@@ -31,9 +43,17 @@ private slots:
 
     void on_pdf_clicked();
 
+
+    void on_statistics_clicked();
+
+    void on_cryptage_clicked();
+
+    void on_decryptage_clicked();
+
 private:
     Ui::MainWindow *ui;
     Employ E;
+
 };
 
 #endif // MAINWINDOW_H

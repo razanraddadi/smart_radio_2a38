@@ -3,6 +3,9 @@
 #include <QSqlQueryModel>
 #include <QtDebug>
 #include <QObject>
+#include <iostream>
+#include <bits/stdc++.h>
+#include <string>
 Employ::Employ()
 {
 cin=0; cnss=0;
@@ -27,6 +30,52 @@ void Employ::setprenom(QString prenom){this->prenom=prenom;}
 void Employ::setcin(int cin){this->cin=cin;}
 void Employ::setcnss(int cnss){this->cnss=cnss;}
 void Employ::setposte(QString poste){this->poste=poste;}
+
+//cryptage/decryptage
+
+using namespace std;
+/*void reverseStr(string& str)
+{
+    int n = str.length();
+    for (int i = 0; i < n / 2; i++)
+        swap(str[i], str[n - i - 1]);
+}*/
+std::string Employ::encryptStr(std::string str,int k){
+    int i,c;
+    char ch;
+   // reverseStr(str);
+    std::string encrypted="";
+    for (i=0;i<=7;i++){
+        c=(int(str.at(i))-48+k)%10;
+        if(c>=5){
+            ch=char(c+65);
+        } else {
+            ch=char(c+97);
+        }
+        encrypted=encrypted+ch;
+    }
+    return(encrypted);
+}
+std::string Employ::decryptStr(std::string str,int k){
+    int i,c,e;
+    char ch;
+   std::string decrypted="";
+   // reverseStr(str);
+    for (i=0;i<=7;i++){
+        e=int(str.at(i));
+        if(e>=97){
+            c=(e-97+48-k)+10;
+        } else {
+            c=(e-65+48-k);
+        }
+        ch=char(c);
+        decrypted=decrypted+ch;
+    }
+    return(decrypted);
+}
+
+
+//
 bool Employ::ajouter()
 {
 
@@ -85,6 +134,46 @@ query.bindValue(":nom",nom);
 query.bindValue(":prenom",prenom);
 query.bindValue(":cnss",cnss_string);
 query.bindValue(":poste",poste);
+
+
+return query.exec();
+}
+
+//cryptage
+bool Employ::cryptage(Employ e, int cin)
+{
+    QString cin_string= QString::number(cin);
+    QSqlQuery  query;
+    //changing cin qstring to string
+        std::string test = cin_string.toLocal8Bit().constData();
+       //applying encrytion to string version of the cin
+         std::string exemp=encryptStr(test,4);
+         // changing cin string to qstring back
+         QString cin_fin = QString::fromStdString(exemp);
+
+query.prepare("UPDATE EMPLOYE SET CIN=:cin WHERE CIN=:cin_orig");
+query.bindValue(":cin_orig",cin_string);
+query.bindValue(":cin",cin_fin);
+
+
+return query.exec();
+}
+//decryptage
+bool Employ::decryptage(Employ e, QString cin )
+{
+
+    QString cin_string= QString(cin);
+    QSqlQuery  query;
+    //changing cin qstring to string
+        std::string test = cin_string.toLocal8Bit().constData();
+       //applying encrytion to string version of the cin
+         std::string exemp=decryptStr(test,4);
+         // changing cin string to qstring back
+         QString cin_fin = QString::fromStdString(exemp);
+
+query.prepare("UPDATE EMPLOYE SET CIN=:cin WHERE CIN=:cin_orig");
+query.bindValue(":cin_orig",cin_string);
+query.bindValue(":cin",cin_fin);
 
 
 return query.exec();
