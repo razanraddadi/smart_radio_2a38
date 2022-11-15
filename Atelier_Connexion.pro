@@ -30,6 +30,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += console
 
 SOURCES += \
+    ens.cpp \
     invite.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -40,6 +41,7 @@ SOURCES += \
     stat.cpp
 
 HEADERS += \
+    ens.h \
     invite.h \
         mainwindow.h \
     connection.h \
