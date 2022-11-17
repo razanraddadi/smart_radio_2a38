@@ -15,4 +15,5 @@ public:
 
 };
 
+// aj
 #endif // CONNECTION_H
