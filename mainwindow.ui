@@ -14,17 +14,17 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="tabWidget">
+   <widget class="QTabWidget" name="mail_pass_2">
     <property name="geometry">
      <rect>
-      <x>-10</x>
+      <x>0</x>
       <y>0</y>
       <width>821</width>
       <height>531</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -35,8 +35,8 @@
        <rect>
         <x>50</x>
         <y>60</y>
-        <width>541</width>
-        <height>241</height>
+        <width>611</width>
+        <height>341</height>
        </rect>
       </property>
       <property name="title">
@@ -124,34 +124,6 @@
         <string>ajouter</string>
        </property>
       </widget>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>afficher</string>
-     </attribute>
-     <widget class="QPushButton" name="pushButtonafficher">
-      <property name="geometry">
-       <rect>
-        <x>390</x>
-        <y>260</y>
-        <width>93</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>afficher</string>
-      </property>
-     </widget>
-     <widget class="QTableView" name="tabsalles">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>60</y>
-        <width>361</width>
-        <height>171</height>
-       </rect>
-      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_3">
@@ -308,6 +280,419 @@
       </widget>
      </widget>
     </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>afficher</string>
+     </attribute>
+     <widget class="QPushButton" name="pushButtonafficher">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>260</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>afficher</string>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tabsalles">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>361</width>
+        <height>171</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_5">
+     <attribute name="title">
+      <string>tri et recherche</string>
+     </attribute>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>90</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>chercher par :</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_chercher">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>320</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>chercher </string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>90</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>trier par :</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="tri_n">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>200</y>
+        <width>83</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>numero</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="tri_b">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>280</y>
+        <width>83</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>bloc</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="tr_e">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>350</y>
+        <width>83</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>etage</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_tri">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>440</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>trier</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="le_chercher">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>220</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tab_sal">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>110</y>
+        <width>256</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_6">
+     <attribute name="title">
+      <string>PDF m à j</string>
+     </attribute>
+     <widget class="QTableView" name="table">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>120</y>
+        <width>256</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pdf">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>350</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>pdf</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_11">
+     <attribute name="title">
+      <string>camera</string>
+     </attribute>
+     <widget class="QPushButton" name="camera_2">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>170</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>camera</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_7">
+     <attribute name="title">
+      <string>mail</string>
+     </attribute>
+     <widget class="QTabWidget" name="tabWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>-20</x>
+        <y>10</y>
+        <width>711</width>
+        <height>461</height>
+       </rect>
+      </property>
+      <property name="tabPosition">
+       <enum>QTabWidget::West</enum>
+      </property>
+      <property name="tabShape">
+       <enum>QTabWidget::Triangular</enum>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="tab_8">
+       <attribute name="title">
+        <string>crud</string>
+       </attribute>
+       <widget class="QLineEdit" name="recherche">
+        <property name="geometry">
+         <rect>
+          <x>480</x>
+          <y>30</y>
+          <width>191</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="placeholderText">
+         <string>Recherche</string>
+        </property>
+        <property name="clearButtonEnabled">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QTableView" name="tableau">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>120</y>
+          <width>651</width>
+          <height>331</height>
+         </rect>
+        </property>
+        <property name="sortingEnabled">
+         <bool>true</bool>
+        </property>
+        <attribute name="horizontalHeaderCascadingSectionResizes">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>false</bool>
+        </attribute>
+       </widget>
+       <widget class="QPushButton" name="export_excel">
+        <property name="geometry">
+         <rect>
+          <x>374</x>
+          <y>30</y>
+          <width>91</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>export excel</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="stat">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>30</y>
+          <width>101</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>stat combo</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pdf_2">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>30</y>
+          <width>51</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Pdf</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="camera">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>30</y>
+          <width>71</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>camera</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_9">
+       <attribute name="title">
+        <string>mail</string>
+       </attribute>
+       <widget class="QPushButton" name="sendBtb">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>410</y>
+          <width>651</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Send</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="subject">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>44</y>
+          <width>651</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="placeholderText">
+         <string>subject</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="browseBtn">
+        <property name="geometry">
+         <rect>
+          <x>587</x>
+          <y>79</y>
+          <width>75</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Browse ...</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="file">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>80</y>
+          <width>571</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="placeholderText">
+         <string>attachement here</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="msg">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>116</y>
+          <width>651</width>
+          <height>291</height>
+         </rect>
+        </property>
+        <property name="placeholderText">
+         <string>type your message here ...</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="rcpt">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>491</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="placeholderText">
+         <string>recipient</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="mail_pass">
+        <property name="geometry">
+         <rect>
+          <x>522</x>
+          <y>10</y>
+          <width>141</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
+        </property>
+        <property name="placeholderText">
+         <string>your mail password</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_10">
+       <attribute name="title">
+        <string>map</string>
+       </attribute>
+      </widget>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -321,6 +706,17 @@
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionplay_video">
+   <property name="text">
+    <string>play video</string>
+   </property>
+   <property name="toolTip">
+    <string>play video</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

@@ -3,6 +3,10 @@
 #include <QSqlQuery>
 #include<QtDebug>
 #include<QObject>
+#include<QDebug>
+#include <QTextEdit>
+#include"mainwindow.h"
+
 Salles::Salles()
 {
 num=0;
@@ -37,11 +41,10 @@ bool Salles::modifier()
 {
  QSqlQuery query;
   QString num_string=QString::number(num);
-         query.prepare ("UPDATE Salles ( num, bloc,etage)"
-                         "VALUES (:num, :bloc, :etage)");
+         query.prepare ("UPDATE Salles SET num=:num , bloc=:bloc ,etage=:etage WHERE num=:num");
         query.bindValue(":num",num_string);
-        query.bindValue(":nom",bloc);
-        query.bindValue(":prenom",etage);
+        query.bindValue(":bloc",bloc);
+        query.bindValue(":etage",etage);
       return query.exec();
 }
 
@@ -65,3 +68,26 @@ QSqlQueryModel* Salles::afficher()
      model->setHeaderData(2, Qt::Horizontal, QObject::tr("etage"));
    return model ;
 }
+QSqlQueryModel* Salles::afficher_chercher_salle(QString rech )
+{
+    QString SQuery="SELECT NUM,BLOC , ETAGE  FROM SALLES WHERE NUM LIKE'%"+rech+"%' ";
+QSqlQueryModel* model=new QSqlQueryModel();
+
+     QSqlQuery qry;
+     qry.prepare(SQuery);
+     qry.exec();
+     model ->setQuery(qry);
+     return model;
+}
+QSqlQueryModel* Salles::afficher_tri()
+{
+    QString SQuery="SELECT NUM,BLOC , ETAGE  FROM SALLES ORDER BY NUM ";
+QSqlQueryModel* model=new QSqlQueryModel();
+
+     QSqlQuery qry;
+     qry.prepare(SQuery);
+     qry.exec();
+     model ->setQuery(qry);
+     return model;
+}
+

@@ -1,5 +1,5 @@
-#ifndef SALLES_H
-#define SALLES_H
+#ifndef SAL_H
+#define SAL_H
 
 #include<QSqlQuery>
 #include<QSqlQueryModel>
@@ -17,10 +17,7 @@ public:
     void setbloc(QString);
     void setetage(QString);
     bool ajouter();
-
    QSqlQueryModel* afficher();
-    QSqlQueryModel* afficher_tri();
-     QSqlQueryModel* afficher_chercher_salle(QString);
    bool supprimer(int );
    bool modifier ();
 private :
@@ -30,4 +27,5 @@ private :
 };
 
 
-#endif // SALLES_H
+
+#endif // SAL_H
