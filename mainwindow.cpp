@@ -25,6 +25,16 @@
 #include <QLineSeries>
 #include <QCategoryAxis>
 
+#include <QPrinter>
+#include <QPrintDialog>
+#include"QPdfWriter"
+#include"QDesktopServices"
+#include<QtPrintSupport>
+#include <QPropertyAnimation>
+#include<QTextDocument>
+#include<QFileDialog>
+#include <QPrinterInfo>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -463,4 +473,55 @@ void MainWindow::on_decryptage_clicked()
     {
         QMessageBox::critical(nullptr,QObject::tr("Not OK"),QObject::tr("Decryptage non Effectué\n"),QMessageBox::Cancel);
     }
+}
+
+void MainWindow::on_print_clicked()
+{
+    QString strStream;
+    QTextStream out(&strStream);
+
+    const int rowCount = ui->table->model()->rowCount();
+    const int columnCount = ui->table->model()->columnCount();
+
+    out <<  "<html>\n"
+        "<head>\n"
+        "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+         <<  QString("<title>%1</title>\n").arg("employe")
+         <<  "</head>\n"
+        "<body bgcolor=#ffffff link=#5000A0>\n"
+        "<table border=1 cellspacing=0 cellpadding=2>\n";
+
+    // headers
+    out << "<thead><tr bgcolor=#f0f0f0>";
+    for (int column = 0; column < columnCount; column++)
+        if (!ui->table->isColumnHidden(column))
+            out << QString("<th>%1</th>").arg(ui->table->model()->headerData(column, Qt::Horizontal).toString());
+    out << "</tr></thead>\n";
+
+    // data table
+    for (int row = 0; row < rowCount; row++) {
+        out << "<tr>";
+        for (int column = 0; column < columnCount; column++) {
+            if (!ui->table->isColumnHidden(column)) {
+                QString data = ui->table->model()->data(ui->table->model()->index(row, column)).toString().simplified();
+                out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+            }
+        }
+        out << "</tr>\n";
+    }
+    out <<  "</table>\n"
+        "</body>\n"
+        "</html>\n";
+
+    QTextDocument *document = new QTextDocument();
+    document->setHtml(strStream);
+
+    QPrinter printer;
+
+    QPrintDialog *dialog = new QPrintDialog(&printer, NULL);
+    if (dialog->exec() == QDialog::Accepted) {
+        document->print(&printer);
+    }
+
+    delete document;
 }

@@ -50,6 +50,8 @@ private slots:
 
     void on_decryptage_clicked();
 
+    void on_print_clicked();
+
 private:
     Ui::MainWindow *ui;
     Employ E;
