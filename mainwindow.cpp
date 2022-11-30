@@ -546,7 +546,8 @@ void MainWindow::on_arduinoOne_clicked()
     QSqlQuery  query;
 
 
-    int val=2;
+
+    int val = qrand()%(2-1 + 1) + 1; //resultat input
 
     if (val==2){
         //arduino
