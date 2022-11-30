@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include<employ.h>
-#include<smtp.h>
+
 #include<QSqlQuery>
 #include<QSqlQueryModel>
 
@@ -17,6 +17,7 @@
 #include <QHorizontalStackedBarSeries>
 #include <QLineSeries>
 #include <QCategoryAxis>
+#include <arduino.h>
 
 namespace Ui {
 class MainWindow;
@@ -30,6 +31,9 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
+    QString msg="ttttt";
+
 private slots:
     void on_pushButton_clicked();
 
@@ -37,7 +41,7 @@ private slots:
 
     void on_pushButton_2_clicked();
 
-    void on_chercher_clicked();
+   // void on_chercher_clicked();
 
     void on_trier_clicked();
 
@@ -52,9 +56,16 @@ private slots:
 
     void on_print_clicked();
 
+    void on_arduinoOne_clicked();
+
+
+    void on_search_textChanged(const QString &rech);
+
 private:
     Ui::MainWindow *ui;
     Employ E;
+    Arduino A;
+
 
 };
 

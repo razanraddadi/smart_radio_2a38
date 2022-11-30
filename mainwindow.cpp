@@ -36,6 +36,7 @@
 #include <QPrinterInfo>
 
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -47,7 +48,16 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tri->setModel(E.tri_prenom());
     ui->tri->setModel(E.tri_cnss());
 
+    int ret=A.connect_arduino(); // lancer la connexion à arduino
+        switch(ret){
+        case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
+            break;
+        case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
+           break;
+        case(-1):qDebug() << "arduino is not available";
+        }
 
+         connect(this, SIGNAL(timeout()), this, SLOT(setRefSalle()));
 
 }
 
@@ -63,8 +73,10 @@ void MainWindow::on_pushButton_clicked()
    int cin=ui->cin->text().toInt();
    int cnss=ui->cnss->text().toInt();
    QString poste=ui->poste->text();
+   QString SALAIRE_INIT="1600";
+   QString ETAT="null";
 
-    Employ E(nom,prenom,cin,cnss,poste);
+    Employ E(nom,prenom,cin,cnss,poste,SALAIRE_INIT,ETAT);
 
     bool test= E.ajouter();
 
@@ -106,8 +118,10 @@ void MainWindow::on_pushButton_2_clicked()
     int cin=ui->cin_2->text().toInt();
     int cnss=ui->cnss_2->text().toInt();
     QString poste=ui->poste_2->text();
+    QString SALAIRE_INIT="1600";
+    QString ETAT="null";
 
-    Employ E2(nom,prenom,cin,cnss,poste);
+    Employ E2(nom,prenom,cin,cnss,poste,SALAIRE_INIT,ETAT);
 
     bool test= E2.update(E2);
 
@@ -124,7 +138,7 @@ void MainWindow::on_pushButton_2_clicked()
 
 }
 
-void MainWindow::on_chercher_clicked()
+/*void MainWindow::on_chercher_clicked()
 {
     QString rech =ui->search->text();
 
@@ -192,7 +206,7 @@ void MainWindow::on_chercher_clicked()
                     }
 
                     }
-}
+}*/
 
 void MainWindow::on_trier_clicked()
 {
@@ -524,4 +538,85 @@ void MainWindow::on_print_clicked()
     }
 
     delete document;
+}
+
+void MainWindow::on_arduinoOne_clicked()
+{
+
+    QSqlQuery  query;
+
+
+    int val=2;
+
+    if (val==2){
+        //arduino
+    QString dataSend=msg;
+        A.write_to_arduino(dataSend.toStdString().c_str());
+        A.write_to_arduino(("1")); //envoyer 1 à arduino
+        A.write_to_arduino(dataSend.toStdString().c_str());
+
+    //base
+        int sal=1600-(5*2);
+        QString salaire = QString::number(sal);
+        QString cin="14514839";
+        QString etat="A l heure";
+
+        query.prepare("UPDATE EMPLOYE SET SALAIRE_INIT= :sal_init, ETAT= :etat WHERE CIN= :cin");
+        query.bindValue(":cin",cin);
+        query.bindValue(":sal_init",salaire);
+        query.bindValue(":etat",etat);
+
+        bool test=query.exec();
+        if (test)
+        {
+            QMessageBox::information(nullptr,QObject::tr("OK"),QObject::tr("Employé à l'heure\n"),QMessageBox::Cancel);
+            ui->table->setModel(E.afficher());
+        }
+        else
+        {
+            QMessageBox::critical(nullptr,QObject::tr("Not OK"),QObject::tr("Erreur\n"),QMessageBox::Cancel);
+        }
+
+
+    }
+    else if (val==1){
+        //arduino
+        QString dataSend=msg;
+            A.write_to_arduino(dataSend.toStdString().c_str());
+            A.write_to_arduino(("2")); //envoyer 2 à arduino
+            A.write_to_arduino(dataSend.toStdString().c_str());
+
+       //base
+
+            QString cin="14514839";
+            QString etat="En Retard";
+
+            query.prepare("UPDATE EMPLOYE SET ETAT= :etat WHERE CIN= :cin");
+            query.bindValue(":cin",cin);
+
+            query.bindValue(":etat",etat);
+
+            bool test=query.exec();
+            if (test)
+            {
+                QMessageBox::information(nullptr,QObject::tr("OK"),QObject::tr("Employé en retard\n"),QMessageBox::Cancel);
+                ui->table->setModel(E.afficher());
+            }
+            else
+            {
+                QMessageBox::critical(nullptr,QObject::tr("Not OK"),QObject::tr("Erreur\n"),QMessageBox::Cancel);
+            }
+
+
+    }
+}
+
+
+
+void MainWindow::on_search_textChanged(const QString &rech)
+{
+   Employ E;
+   QString recherche=ui->search->text();
+   ui->tri->setModel(E.chercher_cnss(rech));
+
 }

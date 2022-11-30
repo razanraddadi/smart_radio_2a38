@@ -9,27 +9,33 @@
 Employ::Employ()
 {
 cin=0; cnss=0;
-nom=" "; prenom=" "; poste=" ";
+nom=" "; prenom=" "; poste=" "; SALAIRE_INIT=" "; ETAT=" ";
 }
-Employ::Employ(QString nom,QString prenom,int cin,int cnss ,QString poste)
+Employ::Employ(QString nom,QString prenom,int cin,int cnss ,QString poste,QString SALAIRE_INIT,QString ETAT)
 {
     this->nom=nom;
     this->prenom=prenom;
     this->cin=cin;
     this->cnss=cnss;
     this->poste=poste;
+    this->SALAIRE_INIT=SALAIRE_INIT;
+    this->ETAT=ETAT;
 }
 QString Employ::getnom(){return nom;}
 QString Employ::getprenom(){return prenom;}
 int Employ::getcin(){return cin;}
 int Employ::getcnss(){return cnss;}
 QString Employ::getposte(){return poste;}
+QString Employ::getsalaire_init(){return SALAIRE_INIT;}
+QString Employ::getetat(){return ETAT;}
 
 void Employ::setnom(QString nom){this->nom=nom;}
 void Employ::setprenom(QString prenom){this->prenom=prenom;}
 void Employ::setcin(int cin){this->cin=cin;}
 void Employ::setcnss(int cnss){this->cnss=cnss;}
 void Employ::setposte(QString poste){this->poste=poste;}
+void Employ::setsalaire_init(QString SALAIRE_INIT){this->SALAIRE_INIT=SALAIRE_INIT;}
+void Employ::setetat(QString ETAT){this->ETAT=ETAT;}
 
 //cryptage/decryptage
 
@@ -81,16 +87,19 @@ bool Employ::ajouter()
 
     QString cin_string= QString::number(cin);
     QString cnss_string= QString::number(cnss);
+    QString sal="1600";
+    QString etat="null";
     QSqlQuery query;
 
-          query.prepare("INSERT INTO EMPLOYE (NOM, PRENOM, CIN, CNSS, POSTE) "
-                        "VALUES (:nom, :prenom, :cin, :cnss, :poste );");
+          query.prepare("INSERT INTO EMPLOYE (NOM, PRENOM, CIN, CNSS, POSTE,SALAIRE_INIT,ETAT) "
+                        "VALUES (:nom, :prenom, :cin, :cnss, :poste, :SALAIRE_INIT, :ETAT );");
           query.bindValue(":nom", nom);
           query.bindValue(":prenom", prenom);
           query.bindValue(":cin",cin_string);
           query.bindValue(":cnss", cnss_string);
           query.bindValue(":poste", poste);
-
+          query.bindValue(":SALAIRE_INIT", sal);
+          query.bindValue(":ETAT", etat);
           return query.exec();
 
 
@@ -118,6 +127,8 @@ QSqlQueryModel * Employ::afficher()
            model->setHeaderData(2, Qt::Horizontal,  QObject::tr("CIN"));
             model->setHeaderData(3, Qt::Horizontal,  QObject::tr("CNSS"));
              model->setHeaderData(4, Qt::Horizontal,  QObject::tr("FONCTION"));
+                 model->setHeaderData(5, Qt::Horizontal,  QObject::tr("SALAIRE"));
+                     model->setHeaderData(6, Qt::Horizontal,  QObject::tr("ETAT"));
 
     return model;
 }
@@ -215,7 +226,7 @@ QSqlQueryModel* Employ::tri_cnss()
     return model;
 }
 
-QSqlQueryModel* Employ::chercher_cin(QString rech)
+/*QSqlQueryModel* Employ::chercher_cin(QString rech)
 {
        QString sQuery="SELECT * FROM EMPLOYE WHERE CIN LIKE'%"+rech+"%'";
 
@@ -249,11 +260,12 @@ QSqlQueryModel* Employ::chercher_prenom(QString rech)
         qry.exec();
         model->setQuery(qry);
         return model;
-}
+}*/
 
 QSqlQueryModel* Employ::chercher_cnss(QString rech)
 {
-       QString sQuery="SELECT * FROM EMPLOYE WHERE CNSS LIKE'%"+rech+"%'";
+       QString sQuery="SELECT * FROM EMPLOYE WHERE CNSS LIKE'%"+rech+"%' OR POSTE LIKE'%"+rech+"%' OR PRENOM LIKE'%"+rech+"%' OR NOM LIKE'%"+rech+"%'\
+OR CIN LIKE'%"+rech+"%' ";
 
        QSqlQueryModel*model=new QSqlQueryModel();
         QSqlQuery qry;
@@ -263,7 +275,7 @@ QSqlQueryModel* Employ::chercher_cnss(QString rech)
         return model;
 }
 
-QSqlQueryModel* Employ::chercher_poste(QString rech)
+/*QSqlQueryModel* Employ::chercher_poste(QString rech)
 {
        QString sQuery="SELECT * FROM EMPLOYE WHERE POSTE LIKE'%"+rech+"%'";
 
@@ -273,4 +285,4 @@ QSqlQueryModel* Employ::chercher_poste(QString rech)
         qry.exec();
         model->setQuery(qry);
         return model;
-}
+}*/

@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -553,71 +553,6 @@
       <property name="title">
        <string>RECHERCHE par: </string>
       </property>
-      <widget class="QRadioButton" name="rech_1">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>20</y>
-         <width>121</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>CIN </string>
-       </property>
-      </widget>
-      <widget class="QRadioButton" name="rech_2">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>20</y>
-         <width>121</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Prenom</string>
-       </property>
-      </widget>
-      <widget class="QRadioButton" name="rech_3">
-       <property name="geometry">
-        <rect>
-         <x>250</x>
-         <y>20</y>
-         <width>121</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Nom</string>
-       </property>
-      </widget>
-      <widget class="QRadioButton" name="rech_4">
-       <property name="geometry">
-        <rect>
-         <x>340</x>
-         <y>20</y>
-         <width>121</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>CNSS </string>
-       </property>
-      </widget>
-      <widget class="QRadioButton" name="rech_5">
-       <property name="geometry">
-        <rect>
-         <x>430</x>
-         <y>20</y>
-         <width>121</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Poste</string>
-       </property>
-      </widget>
       <widget class="QLineEdit" name="search">
        <property name="geometry">
         <rect>
@@ -626,19 +561,6 @@
          <width>113</width>
          <height>22</height>
         </rect>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="chercher">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>60</y>
-         <width>93</width>
-         <height>28</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Chercher</string>
        </property>
       </widget>
      </widget>
@@ -669,6 +591,37 @@
       <property name="text">
        <string>Statistiques</string>
       </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_7">
+     <attribute name="title">
+      <string>Arduino</string>
+     </attribute>
+     <widget class="QGroupBox" name="groupBox_6">
+      <property name="geometry">
+       <rect>
+        <x>49</x>
+        <y>29</y>
+        <width>751</width>
+        <height>461</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>arduino</string>
+      </property>
+      <widget class="QPushButton" name="arduinoOne">
+       <property name="geometry">
+        <rect>
+         <x>200</x>
+         <y>120</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Pointage</string>
+       </property>
+      </widget>
      </widget>
     </widget>
    </widget>
