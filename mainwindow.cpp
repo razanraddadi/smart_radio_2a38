@@ -79,7 +79,11 @@ void MainWindow::on_pushButton_clicked()
     Employ E(nom,prenom,cin,cnss,poste,SALAIRE_INIT,ETAT);
 
     bool test= E.ajouter();
-
+ui->nom->clear();
+ui->prenom->clear();
+ui->cin->clear();
+ui->cnss->clear();
+ui->poste->clear();
     if (test)
     {
         QMessageBox::information(nullptr,QObject::tr("OK"),QObject::tr("Ajout Effectué\n"),QMessageBox::Cancel);
@@ -97,6 +101,7 @@ void MainWindow::on_supprimer_clicked()
 Employ E1;
 E1.setcin(ui->supp->text().toInt());
 bool test=E1.supprimer(E1.getcin());
+ui->supp->clear();
 if (test)
 {
     QMessageBox::information(nullptr,QObject::tr("OK"),QObject::tr("Suppression Effectuée\n"),QMessageBox::Cancel);
@@ -124,7 +129,11 @@ void MainWindow::on_pushButton_2_clicked()
     Employ E2(nom,prenom,cin,cnss,poste,SALAIRE_INIT,ETAT);
 
     bool test= E2.update(E2);
-
+ui->nom_2->clear();
+ui->prenom_2->clear();
+ui->cin_2->clear();
+ui->cnss_2->clear();
+ui->poste_2->clear();
     if (test)
     {
         QMessageBox::information(nullptr,QObject::tr("OK"),QObject::tr("Modification Effectué\n"),QMessageBox::Cancel);
@@ -138,75 +147,7 @@ void MainWindow::on_pushButton_2_clicked()
 
 }
 
-/*void MainWindow::on_chercher_clicked()
-{
-    QString rech =ui->search->text();
 
-     if(ui->rech_1->isChecked())
-    {
-     bool test=E.chercher_cin(rech);
-
-    if(test)
-    {
-
-    ui->tri->setModel(E.chercher_cin(rech));
-
-    }
-
-    }
-     else
-         if(ui->rech_2->isChecked())
-        {
-         bool test=E.chercher_prenom(rech);
-
-        if(test)
-        {
-
-        ui->tri->setModel(E.chercher_prenom(rech));
-
-        }
-
-        }
-     else
-             if(ui->rech_3->isChecked())
-            {
-             bool test=E.chercher_nom(rech);
-
-            if(test)
-            {
-
-            ui->tri->setModel(E.chercher_nom(rech));
-
-            }
-
-            }
-     else
-                 if(ui->rech_4->isChecked())
-                {
-                 bool test=E.chercher_cnss(rech);
-
-                if(test)
-                {
-
-                ui->tri->setModel(E.chercher_cnss(rech));
-
-                }
-
-                }
-     else
-                     if(ui->rech_5->isChecked())
-                    {
-                     bool test=E.chercher_poste(rech);
-
-                    if(test)
-                    {
-
-                    ui->tri->setModel(E.chercher_poste(rech));
-
-                    }
-
-                    }
-}*/
 
 void MainWindow::on_trier_clicked()
 {
@@ -283,58 +224,64 @@ void MainWindow::on_trier_clicked()
 
 void MainWindow::on_pdf_clicked()
 {
-    {
 
-           QString strStream;
-                       QTextStream out(&strStream);
-                       const int rowCount = ui->table->model()->rowCount();
-                       const int columnCount =ui->table->model()->columnCount();
+    QPdfWriter pdf("D:/Esprit/2A38/Projet C++/Atelier_Connexion/Liste_employes.pdf");
 
+   QPainter painter(&pdf);
+   int i = 4100;
 
-                       out <<  "<html>\n"
-                               "<head>\n"
-                               "<meta Content=\"Text/html; charset=Windows-1251\">\n"
-                               <<  QString("<title>%1</title>\n").arg("employe")
-                               <<  "</head>\n"
-                               "<body bgcolor=#FFFFFF link=#5000A0>\n"
-                                   "<h1>Liste des Employes</h1>"
+          QColor dateColor(0x4a5bcf);
+          painter.setPen(dateColor);
 
-                                   "<table border=1 cellspacing=0 cellpadding=2>\n";
+          painter.setFont(QFont("Montserrat SemiBold", 11));
+          QDate cd = QDate::currentDate();
+          painter.drawText(8400,250,cd.toString("Tunis"));
+          painter.drawText(8100,500,cd.toString("dd/MM/yyyy"));
 
-                       // headers
-                           out << "<thead><tr bgcolor=#f0f0f0>";
-                           for (int column = 0; column < columnCount; column++)
-                               if (!ui->table->isColumnHidden(column))
-                                   out << QString("<th>%1</th>").arg(ui->table->model()->headerData(column, Qt::Horizontal).toString());
-                           out << "</tr></thead>\n";
-                           // data table
-                              for (int row = 0; row < rowCount; row++) {
-                                  out << "<tr>";
-                                  for (int column = 0; column < columnCount; column++) {
-                                      if (!ui->table->isColumnHidden(column)) {
-                                          QString data = ui->table->model()->data(ui->table->model()->index(row, column)).toString().simplified();
-                                          out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
-                                      }
-                                  }
-                                  out << "</tr>\n";
-                              }
-                              out <<  "</table>\n"
-                                  "</body>\n"
-                                  "</html>\n";
+          QColor titleColor(0x341763);
+          painter.setPen(titleColor);
+          painter.setFont(QFont("Montserrat SemiBold", 25));
+
+          painter.drawText(3000,2700,"Liste des employés");
+
+          painter.setPen(Qt::black);
+          painter.setFont(QFont("Time New Roman", 15));
+          //painter.drawRect(100,100,9400,2500);
+          painter.drawRect(100,3300,9400,500);
+
+          painter.setFont(QFont("Montserrat SemiBold", 10));
+
+          painter.drawText(500,3600,"Nom");
+          painter.drawText(2000,3600,"Prénom");
+          painter.drawText(3800,3600,"CIN");
+          painter.drawText(4800,3600,"CNSS");
+          painter.drawText(5800,3600,"Poste");
+          painter.drawText(6800,3600,"Salaire");
+          painter.drawText(7800,3600,"Etat");
+          painter.setFont(QFont("Montserrat", 10));
+          painter.drawRect(100,3300,9400,9000);
 
 
+          QSqlQuery query;
+          query.prepare("SELECT * FROM EMPLOYE");
+          query.exec();
+          int y=4300;
+          while (query.next())
+          {
+              painter.drawLine(100,y,9490,y);
+              y+=500;
+              painter.drawText(500,i,query.value(0).toString());
+              painter.drawText(2000,i,query.value(1).toString());
+              painter.drawText(3800,i,query.value(2).toString());
+              painter.drawText(4800,i,query.value(3).toString());
+              painter.drawText(5800,i,query.value(4).toString());
+              painter.drawText(6800,i,query.value(5).toString());
+              painter.drawText(7800,i,query.value(6).toString());
 
-               QTextDocument *document = new QTextDocument();
-               document->setHtml(strStream);
-
-
-               //QTextDocument document;
-               //document.setHtml(html);
-               QPrinter printer(QPrinter::PrinterResolution);
-               printer.setOutputFormat(QPrinter::PdfFormat);
-               printer.setOutputFileName("employe.pdf");
-               document->print(&printer);
-   }
+             i = i + 500;
+          }
+          QMessageBox::information(this, QObject::tr("PDF Enregistré!"),
+          QObject::tr("PDF Enregistré!.\n" "Click Cancel to exit."), QMessageBox::Cancel);
 }
 
 
@@ -456,7 +403,7 @@ void MainWindow::on_cryptage_clicked()
 
 
     bool test= E3.cryptage(E3,cin);
-
+ui->cin_orig->clear();
     if (test)
     {
         QMessageBox::information(nullptr,QObject::tr("OK"),QObject::tr("Cryptage Effectué\n"),QMessageBox::Cancel);
@@ -476,7 +423,7 @@ void MainWindow::on_decryptage_clicked()
 
 
     bool test= E4.decryptage(E4,cin);
-
+ui->cin_orig->clear();
     if (test)
     {
         QMessageBox::information(nullptr,QObject::tr("OK"),QObject::tr("Decryptage Effectué\n"),QMessageBox::Cancel);
@@ -546,8 +493,9 @@ void MainWindow::on_arduinoOne_clicked()
     QSqlQuery  query;
 
 
-
+  int nb_hr = qrand()%(8-1 + 1) + 1; //resultat input
     int val = qrand()%(2-1 + 1) + 1; //resultat input
+
 
     if (val==2){
         //arduino
@@ -557,14 +505,13 @@ void MainWindow::on_arduinoOne_clicked()
         A.write_to_arduino(dataSend.toStdString().c_str());
 
     //base
-        int sal=1600-(5*2);
-        QString salaire = QString::number(sal);
+
         QString cin="14514839";
         QString etat="A l heure";
 
-        query.prepare("UPDATE EMPLOYE SET SALAIRE_INIT= :sal_init, ETAT= :etat WHERE CIN= :cin");
+        query.prepare("UPDATE EMPLOYE SET ETAT= :etat WHERE CIN= :cin");
         query.bindValue(":cin",cin);
-        query.bindValue(":sal_init",salaire);
+
         query.bindValue(":etat",etat);
 
         bool test=query.exec();
@@ -582,19 +529,28 @@ void MainWindow::on_arduinoOne_clicked()
     }
     else if (val==1){
         //arduino
+
+
+
         QString dataSend=msg;
             A.write_to_arduino(dataSend.toStdString().c_str());
             A.write_to_arduino(("2")); //envoyer 2 à arduino
             A.write_to_arduino(dataSend.toStdString().c_str());
 
        //base
+            QSqlQuery exist("SELECT SALAIRE_INIT FROM EMPLOYE WHERE CIN='14514839'");
+            while (exist.next()) {//check that you have next result
+                QString exp = exist.value(0).toString();
+                int somme=exp.toInt();
 
+           int sal=somme-(5*(nb_hr));
+           QString salaire = QString::number(sal);
             QString cin="14514839";
             QString etat="En Retard";
 
-            query.prepare("UPDATE EMPLOYE SET ETAT= :etat WHERE CIN= :cin");
+            query.prepare("UPDATE EMPLOYE SET SALAIRE_INIT= :sal_init, ETAT= :etat WHERE CIN= :cin");
             query.bindValue(":cin",cin);
-
+            query.bindValue(":sal_init",salaire);
             query.bindValue(":etat",etat);
 
             bool test=query.exec();
@@ -610,6 +566,7 @@ void MainWindow::on_arduinoOne_clicked()
 
 
     }
+}
 }
 
 
