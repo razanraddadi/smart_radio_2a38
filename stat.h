@@ -35,4 +35,5 @@ private:
     stat s;
     invite I ;
 };
+
 #endif // STAT_H

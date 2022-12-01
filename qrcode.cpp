@@ -1,4 +1,5 @@
 #include "qrcode.h"
+
 #include <algorithm>
 #include <climits>
 #include <cstddef>

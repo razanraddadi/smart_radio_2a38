@@ -400,4 +400,5 @@ class BitBuffer final : public std::vector<bool> {
 
 };
 }
+
 #endif // QRCODE_H

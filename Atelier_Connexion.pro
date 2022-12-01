@@ -3,6 +3,7 @@
 # Project created by QtCreator 2018-10-26T21:45:23
 #
 #-------------------------------------------------
+QT       += serialport
 QT       += core gui
 QT       += core gui sql
 QT       += svg
@@ -27,10 +28,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-CONFIG += console
+CONFIG += c++11
 
 SOURCES += \
-    ens.cpp \
+    arduino.cpp \
+    dialog.cpp \
     invite.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -41,7 +43,8 @@ SOURCES += \
     stat.cpp
 
 HEADERS += \
-    ens.h \
+    arduino.h \
+    dialog.h \
     invite.h \
         mainwindow.h \
     connection.h \
@@ -50,6 +53,7 @@ HEADERS += \
     stat.h
 
 FORMS += \
+        dialog.ui \
         mainwindow.ui \
         stat.ui
 
