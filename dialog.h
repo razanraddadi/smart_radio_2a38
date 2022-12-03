@@ -37,6 +37,9 @@ private slots:
 
 
 
+
+
+
 private:
     Ui::Dialog *ui;
     invite I;
