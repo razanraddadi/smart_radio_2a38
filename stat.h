@@ -28,7 +28,7 @@ class statistiques : public QDialog
 
 public:
     explicit statistiques(QWidget *parent = nullptr);
-       /* virtual */~statistiques();
+        virtual ~statistiques();
 
 private:
     Ui::statistiques *ui;

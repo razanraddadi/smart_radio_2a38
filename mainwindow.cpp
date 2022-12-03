@@ -96,7 +96,7 @@ void MainWindow::update_label()
     data=A.read_from_arduino();
 
     qDebug()<<data;
-if(data!="f")
+if(data!="")
 {
     for(i=0;i<data.length();i++)
     {
@@ -114,7 +114,7 @@ if(data!="f")
               k=0;
         }
             int count=0;
-        count=0;
+
 
     while(qry.next())
     {QString d="";

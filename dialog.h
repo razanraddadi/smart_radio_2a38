@@ -35,6 +35,8 @@ private slots:
 
     void on_pushButton_refresh_clicked();
 
+
+
 private:
     Ui::Dialog *ui;
     invite I;
