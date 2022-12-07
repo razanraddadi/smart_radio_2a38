@@ -608,24 +608,11 @@
      <attribute name="title">
       <string>Arduino</string>
      </attribute>
-     <widget class="QPushButton" name="pushButton_arduino">
-      <property name="geometry">
-       <rect>
-        <x>480</x>
-        <y>90</y>
-        <width>93</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Arduino</string>
-      </property>
-     </widget>
      <widget class="QTableView" name="table_historique">
       <property name="geometry">
        <rect>
-        <x>55</x>
-        <y>180</y>
+        <x>90</x>
+        <y>90</y>
         <width>481</width>
         <height>192</height>
        </rect>

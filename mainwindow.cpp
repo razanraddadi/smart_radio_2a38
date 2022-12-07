@@ -526,8 +526,8 @@ void MainWindow::on_tab_Partenariats_doubleClicked(const QModelIndex &index)
     val = val.mid(0,10);
     qDebug()<< val;
 
-    QDate Date = QDate::fromString(val,"yyyy-MM-dd");
-    ui->calendarWidget->setSelectedDate(Date);
+    QDate date = QDate::fromString(val,"yyyy-MM-dd");
+    ui->calendarWidget->setSelectedDate(date);
 }
 
 void MainWindow::on_calendarWidget_activated(const QDate &date)
@@ -540,26 +540,21 @@ void MainWindow::on_calendarWidget_activated(const QDate &date)
    bool test = false;
    if(query.exec())
    {
-       while(query.next())
-       {
+       //while(query.next())
+
            test = true;
            QMessageBox::information(nullptr, QObject::tr("Date exist"),
                        QObject::tr("Date exist.\n"
                                    "Click ok to exit."), QMessageBox::Cancel);
-       }
+
    }
    if(test == false )
    {
        QMessageBox::warning(nullptr, QObject::tr("Date n'existe pas "),
-                   QObject::tr("Date n'exist.\n"
+                   QObject::tr("Date n'existe pas.\n"
                                "Click ok to exit."), QMessageBox::Cancel);
 }
 }
 
 
-void MainWindow::on_pushButton_arduino_clicked()
-{
 
-
-
-}

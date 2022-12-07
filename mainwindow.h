@@ -43,7 +43,7 @@ private slots:
     void on_bouton_chercher_clicked();
    // void on_bouton_Stat_Partenariats_clicked();
     void on_pushButton_PDF_clicked();
-    void on_pushButton_arduino_clicked();
+   // void on_pushButton_arduino_clicked();
     void on_boutton_calcul_clicked();
 
     void on_calendarWidget_activated(const QDate &date);
@@ -57,7 +57,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
      Partenariats p;
-    // stat_combo *s;
+
      QByteArray data;
       Arduino R;
       QString c="";

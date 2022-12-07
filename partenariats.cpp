@@ -169,7 +169,7 @@ int Partenariats::Calculer()
 QSqlQuery Partenariats::request(QString date)
 {
     QSqlQuery query;
-    query.prepare("select * from PARTENATIATS where DATE_P= date('"+date+"','YYYY-MM-DD')");
+    query.prepare("select * from PARTENARIATS where date= DATE_P('"+date+"','YYYY-MM-DD')");
     query.addBindValue(date);
     query.exec();
     return query;
