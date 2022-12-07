@@ -58,3 +58,11 @@ bool history ::supprimer( int id_p)
         query.bindValue(0,iden);
         return query.exec();
     }
+bool history ::supprimertout( int id_p)
+    {
+    QSqlQuery query;
+    QString iden=QString::number(id_p);
+        query.prepare("DELETE FROM HYSTORY  ");
+        query.bindValue(0,iden);
+        return query.exec();
+    }

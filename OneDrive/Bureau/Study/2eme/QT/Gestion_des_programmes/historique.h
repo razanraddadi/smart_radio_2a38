@@ -29,7 +29,9 @@ void setviews(int n);
 QString get_typer();
 QDate get_date();
 QSqlQueryModel* afficherh();
+
    bool supprimer(int );
+   bool supprimertout( int );
 
 
 private:

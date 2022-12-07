@@ -31,7 +31,7 @@ private slots:
 
     void on_pdf_clicked();
     void mygame();
-    void mygame2();
+    void mygame2(int);
 
 
     void on_historique_clicked();
@@ -46,6 +46,10 @@ private slots:
     void on_supprimer_tout_clicked();
 
     void on_supprimer_historique_clicked();
+
+    void on_comboBox_activated(int index);
+
+    void on_week_currentIndexChanged(int index);
 
 private:
     Ui::MainWindow *ui;

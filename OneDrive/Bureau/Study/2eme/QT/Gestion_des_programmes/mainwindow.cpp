@@ -27,8 +27,8 @@
 #include <QtCharts/QPieSeries>
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    : QMainWindow(parent),
+     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
    ui->tableView->setModel(ptmp.afficher());
@@ -187,24 +187,45 @@ void MainWindow::mygame()
 
    ui->date->setText(date_text);
 }
-void MainWindow::mygame2()
-{  Program P;
+void MainWindow::mygame2(int index)
+{/* Program P;
    // int i;
     int x=rand()%24;
     const int y=rand()%60;
     const int z=rand()%60;
-    QString tab1[20];
+    //QString tab1[20];
     QString game;
-    /*for (i=1;i>52;i++)
-    {
-        tab1[i]=x+'/'+y+'/'+z;
-    }*/
+   // for (i=1;i>52;i++)
+   // { QString time_text=time.toString(" hh : mm : ss");
+       // tab1[i]=time_text;
+   // }
 
  QTime time =QTime(x,y,z);
  QString time_text=time.toString(" hh : mm : ss");
  //game=tab1[rand()%51];
-  ui->time_2->setText(time_text);
-  ui->time_3->setText(game);
+  ui->time_3->setText(time_text);
+ // ui->time_3->setText(game);*/
+    Program P;
+        int i;
+        //int x=rand()%24;
+        //const int y=rand()%60;
+        //const int z=rand()%60;
+        QString tab1[52];
+        QString game,game2,finish;
+        for (i=1;i<52;i++)
+        {   int x=rand()%24;
+            const int y=rand()%60;
+            const int z=rand()%60;
+            game=x+'/'+y+'/'+z;
+            tab1[i]=game;
+
+        }
+int wui=ui->week->currentIndex();
+     //QTime time =QTime(x,y,z);
+     //QString time_text=time.toString(" hh : mm : ss");
+     game2=tab1[wui];
+     // ui->time_3->setText(time_text);
+      ui->time_3->setText(game2);
 }
 
 void MainWindow::on_historique_clicked()
@@ -284,3 +305,25 @@ void MainWindow::on_supprimer_historique_clicked()
                     else
                 QMessageBox::critical(nullptr,QObject::tr("Not OK"),QObject::tr("Suppression non validé\n"
                                                                                "Click Cancel to exit"),QMessageBox::Cancel);}
+
+void MainWindow::on_supprimer_tout_clicked()
+{
+    int id_p =ui->le_supph->text().toInt();
+        bool test=h.supprimertout(id_p);
+       ui->tableView_3->setModel(h.afficherh());
+        if(test)
+        {
+
+           QMessageBox::information(nullptr,QObject::tr("OK"),QObject::tr("Suppression validé\n"
+                                                                                   "Click Cancel to exit"),QMessageBox::Cancel); }
+                else
+            QMessageBox::critical(nullptr,QObject::tr("Not OK"),QObject::tr("Suppression non validé\n"
+                                                                           "Click Cancel to exit"),QMessageBox::Cancel);}
+
+
+void MainWindow::on_comboBox_activated(int index)
+{
+return ui->week->currentIndexChanged(index);
+}
+
+

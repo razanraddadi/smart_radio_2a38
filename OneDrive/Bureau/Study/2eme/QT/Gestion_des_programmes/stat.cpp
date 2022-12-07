@@ -20,7 +20,7 @@ statistiques::statistiques(QWidget *parent) :
     ui(new Ui::statistiques)
 {
    // ui->setupUi(this);
-       QBarSet *set=new QBarSet("VIEWS ");
+       QBarSet *set=new QBarSet("NUMBER VIEWS ");
       *set<<A.calculer1(0,100)<<A.calculer1(101,200)<<A.calculer1(201,1000)<<A.calculer1(1000,10000);
        QBarSeries *series=new QBarSeries();
        *set<<10;
