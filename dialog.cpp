@@ -52,6 +52,16 @@
 #include <QDialog>
 #include "stat.h"
 #include <QDebug>
+#include<QPainter>
+#include<QtCharts>
+#include <QChartView>
+#include <QBarSeries>
+#include <QBarSet>
+#include <QLegend>
+#include <QBarCategoryAxis>
+#include <QHorizontalStackedBarSeries>
+#include <QLineSeries>
+#include <QCategoryAxis>
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog)
@@ -245,17 +255,7 @@ void Dialog::on_pushButton_3_clicked()
                                       }
 }
 
-void Dialog::on_pushButton_4_clicked()
-{
-    int res;
-                      statistiques w(this);
-                      w.setWindowTitle("Statistiques Des Invités");
 
-                      res = w.exec();
-                      qDebug() << res;
-                      if (res == QDialog::Rejected)
-                        return;
-}
 
 void Dialog::on_pushButton_refresh_clicked()
 {
@@ -301,3 +301,111 @@ void Dialog::on_pushButton_refresh_clicked()
 
 
 
+
+void Dialog::on_pushButton_clicked()
+{
+    QSqlQuery query,query1,query2,query3;
+            qreal c1=0 ,sum=0,c2=0,c3=0;
+            query.prepare("SELECT * FROM inviter") ;
+            query.exec();
+            while(query.next())
+            {
+                    sum++ ;
+            }
+
+            query1.prepare("SELECT * FROM inviter where AGE >0 and AGE<35") ;
+            query1.exec();
+            while(query1.next())
+            {
+                    c1++ ;
+            }
+
+            query2.prepare("SELECT * FROM inviter where AGE >35 and AGE<60 ") ;
+            query2.exec();
+            while(query2.next())
+            {
+                    c2++ ;
+            }
+
+            query3.prepare("SELECT * FROM inviter where AGE >60") ;
+            query3.exec();
+            while(query3.next())
+            {
+                    c3++ ;
+            }
+
+        qreal d1,d2,d3;
+        d1=(c1/sum)*100;
+        d2=(c2/sum)*100;
+        d3=(c3/sum)*100;
+            QBarSet *set1 = new QBarSet("AGE>0");
+            QBarSet *set2 = new QBarSet("AGE>35");
+            QBarSet *set3 = new QBarSet("AGE>60");
+
+
+            // Assign values for each bar
+             *set1 << d1 ;
+             *set2 << d2 ;
+             *set3 << d3 ;
+
+
+            // Add all sets of data to the chart as a whole
+            // 1. Bar Chart
+            QBarSeries *series = new QBarSeries();
+
+            // 2. Stacked bar chart
+            // QHorizontalStackedBarSeries *series = new QHorizontalStackedBarSeries();
+
+            series->append(set1);
+            series->append(set2);
+            series->append(set3);
+
+
+            // Used to define the bar chart to display, title
+            // legend,
+            QChart *chart = new QChart();
+
+            // Add the chart
+            chart->addSeries(series);
+
+            // Set title
+            chart->setTitle("STATISTIQUE");
+
+            // Define starting animation
+            // NoAnimation, GridAxisAnimations, SeriesAnimations
+            chart->setAnimationOptions(QChart::SeriesAnimations);
+
+            // Holds the category titles
+            QStringList categories;
+            categories << "stats";
+
+            // Adds categories to the axes
+            QBarCategoryAxis *axis = new QBarCategoryAxis();
+            axis->append(categories);
+            chart->addAxis(axis, Qt::AlignBottom);
+            series->attachAxis(axis);
+            chart->createDefaultAxes();
+
+
+            // 2. Stacked Bar chart
+
+            // Define where the legend is displayed
+            chart->legend()->setVisible(true);
+            chart->legend()->setAlignment(Qt::AlignBottom);
+
+
+            // Used to display the chart
+            QChartView *chartView = new QChartView(chart);
+            chartView->setRenderHint(QPainter::Antialiasing);
+
+             chartView->setMinimumSize(550,300);
+            chartView->setParent(ui->tableView_3);
+
+            // Used to change the palette
+            QPalette pal = qApp->palette();
+
+
+            // Apply palette changes to the application
+            qApp->setPalette(pal);
+    chartView->show();
+    }

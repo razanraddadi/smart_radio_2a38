@@ -1,3 +1,4 @@
+/*
 #include "stat.h"
 #include "ui_stat.h"
 
@@ -47,3 +48,4 @@ statistiques ::~statistiques()
 {
 delete ui;
 }
+*/

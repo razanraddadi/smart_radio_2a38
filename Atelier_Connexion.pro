@@ -39,8 +39,7 @@ SOURCES += \
     connection.cpp \
     qrcode.cpp \
     qrcodegeneratedemo.cpp \
-    qrcodegenerateworked.cpp \
-    stat.cpp
+    qrcodegenerateworked.cpp
 
 HEADERS += \
     arduino.h \
@@ -49,13 +48,11 @@ HEADERS += \
         mainwindow.h \
     connection.h \
     qrcode.h \
-    qrcodegenerateworker.h \
-    stat.h
+    qrcodegenerateworker.h
 
 FORMS += \
         dialog.ui \
-        mainwindow.ui \
-        stat.ui
+        mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

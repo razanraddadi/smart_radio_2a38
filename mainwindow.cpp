@@ -11,6 +11,8 @@
 #include <QDebug>
 #include <QSqlQuery>
 #include "arduino.h"
+#include "QtWidgets"
+#include<QLabel>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -24,8 +26,20 @@ MainWindow::MainWindow(QWidget *parent) :
             case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
                break;
             case(-1):qDebug() << "arduino is not available";
+
             }
-             QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));}
+             QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));
+
+             ui->label_3->setWindowFlags(Qt::FramelessWindowHint);
+             ui->label_3->setMask((new QPixmap("C:/Users/Salim Mahdi/Desktop/63787-secure-login.gif"))->mask());
+             QMovie *movie=new QMovie("C:/Users/Salim Mahdi/Desktop/63787-secure-login.gif");
+             ui->label_3->setMovie(movie);
+             movie->start();
+
+
+
+
+}
 
 MainWindow::~MainWindow()
 {

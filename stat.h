@@ -1,4 +1,4 @@
-#ifndef STAT_H
+/*#ifndef STAT_H
 #define STAT_H
 #include <QDialog>
 #include <QGridLayout>
@@ -37,3 +37,4 @@ private:
 };
 
 #endif // STAT_H
+*/
